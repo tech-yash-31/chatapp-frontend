@@ -1,0 +1,94 @@
+/* Container for the entire page */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Center the text content and add spacing */
+.text-center {
+  text-align: center;
+}
+
+/* Heading styles */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Lead paragraph styling */
+.lead {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Button styles */
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+/* Button spacing */
+.me-3 {
+  margin-right: 1rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+/* Group list styling */
+.list-group {
+  margin-top: 1.5rem;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item-action {
+  cursor: pointer;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+/* Margin top for page content */
+.mt-5 {
+  margin-top: 3rem;
+}
