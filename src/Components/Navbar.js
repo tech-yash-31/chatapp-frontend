@@ -40,18 +40,18 @@ const Navbar = ({ isLoggedIn, onLogout, searchQuery, setSearchQuery }) => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link active" to="/home">
+              <li className="nav-item active">
+                <Link className="nav-link" to="/home">
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/about">
+              <li className="nav-item active">
+                <Link className="nav-link" to="/about">
                   About
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/users">
+              <li className="nav-item active">
+                <Link className="nav-link" to="/users">
                   Users
                 </Link>
               </li>

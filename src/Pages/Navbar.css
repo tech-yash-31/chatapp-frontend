@@ -5,20 +5,91 @@
 .navbar-brand {
   font-weight: bold;
   font-size: 1.5rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #ffcc70;
+  text-shadow: 0 0 5px rgba(255, 204, 112, 0.8);
 }
 
 .nav-link {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.nav-link.active {
+  color: #fff;
+  background-color: #ffcc70;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 204, 112, 0.6);
+}
+
+.nav-link:hover {
+  color: #fff;
+  background-color: #d18904;
+  box-shadow: 0 4px 12px rgba(209, 137, 4, 0.4);
 }
 
 .form-control {
   border-radius: 20px;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 10px #ffcc70;
+  border: 2px solid #ffcc70;
 }
 
 .btn-outline-light {
   border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-light:hover {
+  background-color: #d4a2d0;
+  color: #fff;
+  box-shadow: 0 0 10px #ffcc70;
+}
+
+.btn-outline-light::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 204, 112, 0.2);
+  transition: opacity 0.9s ease;
+  opacity: 0.9;
+  border-radius: 20px;
+}
+
+.btn-outline-light:hover::after {
+  opacity: 0;
 }
 
 .navbar-toggler-icon {
   filter: invert(1);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+  .form-control {
+    width: 100%;
+  }
 }
