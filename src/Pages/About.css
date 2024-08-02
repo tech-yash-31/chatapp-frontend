@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.about-card {
+  background: linear-gradient(135deg, #f06, #ffba00);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.about-intro {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.about-features {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.about-benefits {
+  background: linear-gradient(135deg, #1c92d2, #f2fcfe);
+}
+
+.about-team {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+.about-contact {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+.about-intro h1,
+.about-card h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.about-intro p,
+.about-card p,
+.about-card ul {
+  font-size: 18px;
+}
+
+.about-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-card li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.about-card li svg {
+  margin-right: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.about-contact p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.about-contact p svg {
+  margin-right: 10px;
+  color: white;
+  font-size: 20px;
+}

@@ -10,7 +10,7 @@ import Home from "./Components/Home";
 import ViewUser from "./Components/ViewUser";
 import Navbar from "./Components/Navbar";
 import GroupChat from "./Components/GroupChat";
-import { About } from "./Components/About";
+import About from "./Components/About";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
