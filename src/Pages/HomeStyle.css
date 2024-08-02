@@ -1,16 +1,13 @@
-/* Container for the entire page */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Center the text content and add spacing */
 .text-center {
   text-align: center;
 }
 
-/* Heading styles */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -21,14 +18,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* Lead paragraph styling */
 .lead {
   font-size: 1.25rem;
-  color: #555;
+  color: #f9fbfc;
   margin-bottom: 1.5rem;
 }
 
-/* Button styles */
 .btn {
   padding: 10px 20px;
   border-radius: 5px;
@@ -44,7 +39,7 @@ h2 {
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #6eae5d;
   border: none;
 }
 
@@ -91,4 +86,16 @@ h2 {
 /* Margin top for page content */
 .mt-5 {
   margin-top: 3rem;
+}
+
+/* Search input styling */
+.form-control {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
 }

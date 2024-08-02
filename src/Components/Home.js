@@ -71,6 +71,12 @@ const Home = ({ searchQuery, isLoggedIn }) => {
       ) : (
         <div>
           <h2 className="mb-4">Groups</h2>
+          <input
+            type="text"
+            placeholder="Search Groups"
+            className="form-control mb-3"
+            onChange={(e) => handleSearch(e.target.value)}
+          />
           {error && <p className="text-danger">{error}</p>}
           <div className="list-group">
             {filteredGroups.map((group) => (

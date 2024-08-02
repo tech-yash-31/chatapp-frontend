@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Pages/Navbar.css";
 
 const Navbar = ({ isLoggedIn, onLogout, searchQuery, setSearchQuery }) => {
   const [isRegistered, setIsRegistered] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
@@ -57,16 +58,19 @@ const Navbar = ({ isLoggedIn, onLogout, searchQuery, setSearchQuery }) => {
               </li>
             </ul>
 
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-            </form>
+            {location.pathname === "/users" && (
+              <form className="d-flex">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </form>
+            )}
+
             {isLoggedIn ? (
               <button className="btn btn-outline-light" onClick={onLogout}>
                 Logout
