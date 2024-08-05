@@ -17,20 +17,29 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem("jwtToken")
   );
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  );
+
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = (user) => {
     setIsLoggedIn(true);
+    setUsername(user.username);
+    localStorage.setItem("username", user.username);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
+    localStorage.removeItem("username");
     setIsLoggedIn(false);
+    setUsername("");
     window.location.href = "/login";
   };
 
   useEffect(() => {
     setIsLoggedIn(!!localStorage.getItem("jwtToken"));
+    setUsername(localStorage.getItem("username") || "");
   }, []);
 
   return (
@@ -40,6 +49,7 @@ const App = () => {
         onLogout={handleLogout}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        username={username}
       />
       <Routes>
         <Route

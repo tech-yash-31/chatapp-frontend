@@ -70,7 +70,7 @@ const UserList = ({ searchQuery }) => {
     <div className="container mt-4">
       <div className="white-box">
         <h2 className="text-center mb-4">Chat App Users Information</h2>
-        <h2>User Data</h2>
+        <h3 className="user-data">User Data</h3>
         <ul className="list-group mb-4">
           {filteredUsers.map((user) => (
             <li

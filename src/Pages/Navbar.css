@@ -75,6 +75,33 @@
   opacity: 0;
 }
 
+.navbar .user-info {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.navbar .user-info .avatar {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: cadetblue;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar .user-info .username {
+  color: white;
+  margin-right: 15px;
+  font-size: 16px;
+}
+
 .navbar-toggler-icon {
   filter: invert(1);
 }

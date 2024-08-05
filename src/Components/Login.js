@@ -27,7 +27,7 @@ const Login = ({ onLogin }) => {
 
       setSuccess("Login successful!");
       setError("");
-      onLogin();
+      onLogin({ username });
       navigate("/home");
     } catch (err) {
       setError("Login failed. Please try again.");

@@ -66,10 +66,18 @@ label {
   color: #fff;
 }
 
+.register-btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
 .register-btn-secondary {
-  background-color: #6c757d;
+  background-color: #5cd45c;
   color: #fff;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.register-btn-secondary:hover {
+  background-color: #015e11; /* Darker blue on hover */
 }
 
 .register-text-danger {

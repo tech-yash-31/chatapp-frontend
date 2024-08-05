@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Pages/Navbar.css";
 
-const Navbar = ({ isLoggedIn, onLogout, searchQuery, setSearchQuery }) => {
+const Navbar = ({
+  isLoggedIn,
+  onLogout,
+  searchQuery,
+  setSearchQuery,
+  username,
+}) => {
   const [isRegistered, setIsRegistered] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,9 +78,15 @@ const Navbar = ({ isLoggedIn, onLogout, searchQuery, setSearchQuery }) => {
             )}
 
             {isLoggedIn ? (
-              <button className="btn btn-outline-light" onClick={onLogout}>
-                Logout
-              </button>
+              <div className="d-flex align-items-center user-info">
+                <span className="avatar">
+                  {username.charAt(0).toUpperCase()}
+                </span>
+                <span className="username">{username}</span>
+                <button className="btn btn-outline-light" onClick={onLogout}>
+                  Logout
+                </button>
+              </div>
             ) : (
               <button
                 className="btn btn-outline-light"
