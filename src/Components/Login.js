@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../Pages/Login.css";
 
 const Login = ({ onLogin }) => {
@@ -10,11 +9,34 @@ const Login = ({ onLogin }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+
+  const validate = () => {
+    let isValid = true;
+
+    if (!username) {
+      setUsernameError("Username is required");
+      isValid = false;
+    } else {
+      setUsernameError("");
+    }
+
+    if (!password) {
+      setPasswordError("Password is required");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    return isValid;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     try {
       const response = await axios.post("http://localhost:9090/authenticate", {
         username,
@@ -54,6 +76,7 @@ const Login = ({ onLogin }) => {
               required
               className="form-control"
             />
+            {usernameError && <p className="text-danger">{usernameError}</p>}
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
@@ -73,6 +96,7 @@ const Login = ({ onLogin }) => {
                 {passwordVisible ? "👁️" : "🙈"}
               </span>
             </div>
+            {passwordError && <p className="text-danger">{passwordError}</p>}
           </div>
           <button type="submit" className="btn btn-login-primary">
             Login

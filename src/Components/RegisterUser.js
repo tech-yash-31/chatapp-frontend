@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../Pages/RegisterUserStyle.css"; // Assume this CSS file exists and is similar to your login page's CSS
+import "../Pages/RegisterUserStyle.css";
 
 const RegisterUser = () => {
   const [username, setUsername] = useState("");
@@ -10,10 +10,48 @@ const RegisterUser = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+
+  const validate = () => {
+    let isValid = true;
+
+    if (!username) {
+      setUsernameError("Username is required");
+      isValid = false;
+    } else {
+      setUsernameError("");
+    }
+
+    if (!email) {
+      setEmailError("Email is required");
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setEmailError("Email address is invalid");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    if (!password) {
+      setPasswordError("Password is required");
+      isValid = false;
+    } else if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    return isValid;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     try {
       await axios.post("http://localhost:9090/register", {
         username,
@@ -22,6 +60,9 @@ const RegisterUser = () => {
       });
       setSuccess("Registration successful!");
       setError("");
+      setUsername("");
+      setEmail("");
+      setPassword("");
     } catch (err) {
       setError("Registration failed. Please try again.");
       setSuccess("");
@@ -47,6 +88,9 @@ const RegisterUser = () => {
               required
               className="register-form-control"
             />
+            {usernameError && (
+              <p className="register-text-danger">{usernameError}</p>
+            )}
           </div>
           <div className="register-form-group">
             <label htmlFor="email">Email</label>
@@ -58,6 +102,7 @@ const RegisterUser = () => {
               required
               className="register-form-control"
             />
+            {emailError && <p className="register-text-danger">{emailError}</p>}
           </div>
           <div className="register-form-group">
             <label htmlFor="password">Password</label>
@@ -77,6 +122,9 @@ const RegisterUser = () => {
                 {showPassword ? "👁️" : "🙈"}
               </span>
             </div>
+            {passwordError && (
+              <p className="register-text-danger">{passwordError}</p>
+            )}
           </div>
           <button type="submit" className="register-btn register-btn-primary">
             Register

@@ -36,6 +36,12 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+.system-message {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  margin: 10px 0;
+}
 
 .message.sent {
   background-color: #dcf8c6;

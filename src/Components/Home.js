@@ -32,7 +32,6 @@ const Home = ({ searchQuery, isLoggedIn }) => {
     if (groups.length > 0) {
       handleSearch(searchQuery);
     }
-    console.log("Search Query in Home:", searchQuery);
   }, [searchQuery, groups]);
 
   const handleSearch = (query) => {
@@ -52,7 +51,7 @@ const Home = ({ searchQuery, isLoggedIn }) => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container-home mt-5">
       {!isLoggedIn ? (
         <div className="text-center">
           <h1>Welcome to ChatApp</h1>

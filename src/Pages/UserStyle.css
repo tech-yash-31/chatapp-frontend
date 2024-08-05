@@ -1,4 +1,5 @@
 .container {
+  max-width: 690px;
   min-height: 70vh;
   background-color: #4158d0;
   background-image: linear-gradient(

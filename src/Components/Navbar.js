@@ -29,7 +29,7 @@ const Navbar = ({
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark gradient-navbar">
+      <nav className="navbar navbar-expand-lg navbar-dark transparent-navbar">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             A ChatApp
@@ -63,19 +63,6 @@ const Navbar = ({
                 </Link>
               </li>
             </ul>
-
-            {location.pathname === "/users" && (
-              <form className="d-flex">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                />
-              </form>
-            )}
 
             {isLoggedIn ? (
               <div className="d-flex align-items-center user-info">

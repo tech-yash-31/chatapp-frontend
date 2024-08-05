@@ -10,6 +10,7 @@ const UserList = ({ searchQuery }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const navigate = useNavigate();
+  const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery || "");
 
   useEffect(() => {
     axios
@@ -24,8 +25,8 @@ const UserList = ({ searchQuery }) => {
   }, []);
 
   useEffect(() => {
-    handleSearch(searchQuery);
-  }, [searchQuery, users]);
+    handleSearch(localSearchQuery);
+  }, [localSearchQuery, users]);
 
   const handleSearch = (query) => {
     if (!query) {
@@ -70,6 +71,15 @@ const UserList = ({ searchQuery }) => {
     <div className="container mt-4">
       <div className="white-box">
         <h2 className="text-center mb-4">Chat App Users Information</h2>
+        <div className="mb-4">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search Users"
+            value={localSearchQuery}
+            onChange={(e) => setLocalSearchQuery(e.target.value)}
+          />
+        </div>
         <h3 className="user-data">User Data</h3>
         <ul className="list-group mb-4">
           {filteredUsers.map((user) => (

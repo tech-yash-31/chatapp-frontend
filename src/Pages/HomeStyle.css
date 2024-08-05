@@ -1,7 +1,21 @@
-.container {
-  max-width: 800px;
+.container-home {
+  max-width: 690px;
   margin: 0 auto;
-  padding: 20px;
+  min-height: 70vh;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #c850c0 0%,
+    #4158d0 40%,
+    #c2cad0 100%
+  );
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
 }
 
 .text-center {
@@ -43,7 +57,6 @@ h2 {
   border: none;
 }
 
-/* Button spacing */
 .me-3 {
   margin-right: 1rem;
 }
@@ -52,7 +65,6 @@ h2 {
   margin-left: 0.5rem;
 }
 
-/* Group list styling */
 .list-group {
   margin-top: 1.5rem;
 }
@@ -83,12 +95,10 @@ h2 {
   color: #dc3545;
 }
 
-/* Margin top for page content */
 .mt-5 {
   margin-top: 3rem;
 }
 
-/* Search input styling */
 .form-control {
   padding: 10px;
   border-radius: 5px;
