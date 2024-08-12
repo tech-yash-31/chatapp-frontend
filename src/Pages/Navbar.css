@@ -85,7 +85,7 @@
   display: inline-block;
   width: 35px;
   height: 35px;
-  background-color: #6c757d;
+  background-color: #c1c5c9;
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -98,7 +98,7 @@
 }
 
 .navbar .user-info .avatar:hover {
-  background-color: #ffcc70;
+  background-color: #d862c7;
   transform: rotate(360deg);
   transition: transform 0.6s ease;
 }

@@ -18,8 +18,6 @@ const UserForm = ({ userId, userToEdit, onSave }) => {
     }
     onSave();
   };
-  /*
-   */
 
   return (
     <form onSubmit={handleSubmit}>

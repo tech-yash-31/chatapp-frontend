@@ -18,7 +18,7 @@ const About = () => {
         <h2>Features</h2>
         <ul>
           <li>
-            <FaCheck /> Real-time messaging with friends and groups
+            <FaCheck /> Real-time messaging with groups
           </li>
           <li>
             <FaCheck /> Group chat functionality
@@ -71,9 +71,6 @@ const About = () => {
           Meet the team:
         </p>
         <ul>
-          <li>
-            <FaUsers /> Smit - Project Co-ordinator & Manager
-          </li>
           <li>
             <FaUsers /> Yash Panchal - Lead Developer
           </li>

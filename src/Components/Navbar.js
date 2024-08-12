@@ -32,7 +32,7 @@ const Navbar = ({
       <nav className="navbar navbar-expand-lg navbar-dark transparent-navbar">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            A ChatApp
+            ChatApp
           </Link>
           <button
             className="navbar-toggler"

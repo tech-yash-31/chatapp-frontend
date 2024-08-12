@@ -12,6 +12,7 @@ import Navbar from "./Components/Navbar";
 import GroupChat from "./Components/GroupChat";
 import About from "./Components/About";
 import PrivateRoute from "./Components/PrivateRoute";
+import { routes } from "./Util/Constants";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -53,23 +54,23 @@ const App = () => {
       />
       <Routes>
         <Route
-          path="/"
+          path={routes.HOME_ROUTE_EX}
           element={<Home searchQuery={searchQuery} isLoggedIn={isLoggedIn} />}
         />
         <Route
-          path="/home"
+          path={routes.HOME_ROUTE_IN}
           element={<Home searchQuery={searchQuery} isLoggedIn={isLoggedIn} />}
         />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/register" element={<RegisterUser />} />
+        <Route path={routes.ABOUT} element={<About />} />
+        <Route path={routes.LOGIN} element={<Login onLogin={handleLogin} />} />
+        <Route path={routes.REGISTER} element={<RegisterUser />} />
         {/* Protected routes */}
         <Route
-          path="/group/:groupName"
+          path={routes.GROUP_CHAT}
           element={<PrivateRoute element={GroupChat} isLoggedIn={isLoggedIn} />}
         />
         <Route
-          path="/users"
+          path={routes.USERS}
           element={
             <PrivateRoute
               element={UserList}
@@ -79,11 +80,11 @@ const App = () => {
           }
         />
         <Route
-          path="/edit/:userId"
+          path={routes.EDIT_USER}
           element={<PrivateRoute element={EditUser} isLoggedIn={isLoggedIn} />}
         />
         <Route
-          path="/view/:userId"
+          path={routes.VIEW_USER}
           element={<PrivateRoute element={ViewUser} isLoggedIn={isLoggedIn} />}
         />
       </Routes>
