@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import "../Pages/GroupChatStyle.css";
 
@@ -9,12 +9,27 @@ const GroupChat = () => {
   const [newMessage, setNewMessage] = useState("");
   const [strangerCount, setStrangerCount] = useState(1);
   const [strangerMap, setStrangerMap] = useState({});
+  const [mentions, setMentions] = useState(
+    JSON.parse(localStorage.getItem(`mentions-${groupName}`)) || {}
+  );
   const clientRef = useRef(null);
   const username = localStorage.getItem("username") || "Username";
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!groupName) return;
+
+    const joinedGroups =
+      JSON.parse(localStorage.getItem(`joinedGroups-${username}`)) || [];
+
+    if (!joinedGroups.includes(groupName)) {
+      joinedGroups.push(groupName);
+      localStorage.setItem(
+        `joinedGroups-${username}`,
+        JSON.stringify(joinedGroups)
+      );
+    }
 
     const client = new W3CWebSocket(`ws://localhost:9090/chat/${groupName}`);
     clientRef.current = client;
@@ -36,6 +51,24 @@ const GroupChat = () => {
             [dataFromServer.senderName]: `stranger ${strangerCount}`,
           }));
           setStrangerCount((prevCount) => prevCount + 1);
+        }
+
+        const mentionedUser = extractMention(dataFromServer.message);
+        if (mentionedUser) {
+          setMentions((prevMentions) => {
+            const updatedMentions = {
+              ...prevMentions,
+              [mentionedUser]: [
+                ...(prevMentions[mentionedUser] || []),
+                dataFromServer.message,
+              ],
+            };
+            localStorage.setItem(
+              `mentions-${groupName}`,
+              JSON.stringify(updatedMentions)
+            );
+            return updatedMentions;
+          });
         }
 
         setMessages((prevMessages) => [...prevMessages, dataFromServer]);
@@ -73,10 +106,34 @@ const GroupChat = () => {
     }
   };
 
+  const extractMention = (message) => {
+    const mentionPattern = /@(\w+)/;
+    const match = message.match(mentionPattern);
+    return match ? match[1] : null;
+  };
+
+  const handleLeaveGroup = () => {
+    // Remove the group from joined groups in localStorage
+    const joinedGroups =
+      JSON.parse(localStorage.getItem(`joinedGroups-${username}`)) || [];
+    const updatedGroups = joinedGroups.filter((group) => group !== groupName);
+
+    localStorage.setItem(
+      `joinedGroups-${username}`,
+      JSON.stringify(updatedGroups)
+    );
+
+    // Navigate back to the home page after leaving the group
+    navigate("/home");
+  };
+
   return (
     <div className="chat-container">
       <div className="chat-header">
         <h2>{groupName}</h2>
+        <button className="btn btn-danger" onClick={handleLeaveGroup}>
+          Leave Group
+        </button>
       </div>
       <div className="chat-window">
         {messages.map((msg, index) => (
@@ -107,6 +164,16 @@ const GroupChat = () => {
         <button className="btn btn-primary" onClick={sendMessage}>
           Send
         </button>
+      </div>
+      <div className="mentions">
+        <h4>Your Mentions:</h4>
+        {mentions[username] && mentions[username].length > 0 ? (
+          mentions[username].map((mention, index) => (
+            <p key={index}>{mention}</p>
+          ))
+        ) : (
+          <p>No mentions yet.</p>
+        )}
       </div>
     </div>
   );

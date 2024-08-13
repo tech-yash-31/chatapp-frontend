@@ -1,0 +1,71 @@
+.edit-user-container {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  margin: 40px auto;
+  color: #fff;
+}
+
+.edit-user-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.edit-user-form .form-group {
+  margin-bottom: 15px;
+}
+
+.edit-user-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.edit-user-form .form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+}
+
+.edit-user-form .button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Adds spacing between the buttons */
+}
+
+.edit-user-form .btn {
+  width: 48%; /* Make buttons take equal space while leaving some gap */
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-user-form .btn-success {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+}
+
+.edit-user-form .btn-primary {
+  background-color: #0056b3; /* Darker blue for visibility against the gradient */
+  border: none;
+  color: #fff;
+}
+
+.edit-user-form .btn:hover {
+  opacity: 0.9;
+}
+
+.edit-user-form .btn:active {
+  opacity: 0.8;
+}

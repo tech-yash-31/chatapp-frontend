@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
-import "../Pages/UserStyle.css";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import "../Pages/EditUserStyle.css";
 
 const EditUser = () => {
   const { userId } = useParams();
@@ -14,7 +14,6 @@ const EditUser = () => {
     axios
       .get(`http://localhost:9090/getUser/${userId}`)
       .then((response) => {
-        console.log(response, "check");
         const userData = response.data[0];
         setUser(userData);
         setNewEmail(userData.email);
@@ -31,7 +30,7 @@ const EditUser = () => {
     const updatedUser = { ...user, email: newEmail, username: newUsername };
     axios
       .put(`http://localhost:9090/user/${user.userId}`, updatedUser)
-      .then((response) => {
+      .then(() => {
         navigate("/users");
       })
       .catch((error) => {
@@ -40,10 +39,10 @@ const EditUser = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="edit-user-container">
       <h2>Edit User</h2>
       {user && (
-        <div className="mb-4">
+        <div className="edit-user-form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
@@ -64,9 +63,14 @@ const EditUser = () => {
               onChange={(e) => setNewEmail(e.target.value)}
             />
           </div>
-          <button className="btn btn-success" onClick={handleUpdate}>
-            Update
-          </button>
+          <div className="button-group">
+            <button className="btn btn-success" onClick={handleUpdate}>
+              Update
+            </button>
+            <Link className="btn btn-primary" to="/users">
+              Back to User List
+            </Link>
+          </div>
         </div>
       )}
     </div>
